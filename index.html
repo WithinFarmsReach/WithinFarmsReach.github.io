@@ -2,52 +2,386 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Within Farm's Reach</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Within Farm’s Reach — Educational Trust Association Proposal</title>
+  <meta name="description" content="A replicable, member‑run Educational Trust Association model using Within Farm’s Reach as a real-world example for protecting family farms and creating intergenerational learning estates." />
+
+  <!-- Tailwind CSS via CDN (works on GitHub Pages) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Within Farm’s Reach — Educational Trust Association Proposal" />
+  <meta property="og:description" content="Use our real-world example to build your own Educational Trust Association for land, learning, and legacy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://withinfarmsreach.github.io/" />
+  <meta property="og:image" content="/assets/og-cover.jpg" />
+
+  <!-- Simple CSS tweaks -->
   <style>
-    body { font-family: system-ui, Arial, sans-serif; margin: 0; line-height: 1.5; }
-    header { padding: 4rem 1.25rem; text-align: center; }
-    h1 { margin: 0 0 .25rem; font-size: 2.25rem; }
-    nav a { margin: 0 .5rem; text-decoration: none; }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 0 1.25rem 3rem; }
-    footer { padding: 2rem 1.25rem; text-align: center; opacity: .7; }
+    html{scroll-behavior:smooth}
+    .prose p{margin:0 0 1rem}
+    .shadow-soft{box-shadow:0 10px 25px rgba(0,0,0,.08)}
   </style>
 </head>
-<body>
-  <header>
-    <h1>Within Farm’s Reach</h1>
-    <p>Videos, apps, and resources — all in one place.</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#videos">Videos</a>
-      <a href="#apps">Apps</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<body class="bg-white text-gray-900">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="font-semibold tracking-tight text-lg">Within Farm’s Reach</a>
+        <nav class="hidden md:flex gap-6 text-sm">
+          <a href="#/" class="hover:text-green-700">Home</a>
+          <a href="#/guide" class="hover:text-green-700">Guide</a>
+          <a href="#/templates" class="hover:text-green-700">Templates</a>
+          <a href="#/about" class="hover:text-green-700">About</a>
+          <a href="#/media" class="hover:text-green-700">Media</a>
+          <a href="#/faq" class="hover:text-green-700">FAQ</a>
+          <a href="#/contact" class="hover:text-green-700">Contact</a>
+        </nav>
+        <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800">Start Your Trust</a>
+      </div>
+    </div>
   </header>
 
-  <main class="wrap">
-    <h2 id="about">About</h2>
-    <p>Welcome! This is a free GitHub Pages site. Edit this page in your repo to update content.</p>
-
-    <h2 id="videos">Videos</h2>
-    <p>Embed from YouTube/Vimeo to save bandwidth:</p>
-    <div style="position:relative;padding-top:56.25%;">
-      <iframe src="https://youtu.be/s42jtsDMUWE" title="YouTube video"
-              style="position:absolute;inset:0;width:100%;height:100%;border:0;" allowfullscreen></iframe>
+  <!-- SPA CONTAINER START -->
+  <div id="home">
+  
+  <!-- HERO -->
+  <section id="top" class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">A Member‑Run Educational Trust Model<br><span class="text-green-700">for Family Farms & Learning Estates</span></h1>
+          <p class="mt-6 text-lg text-gray-700">This site outlines a practical, lawful pathway to protect land and create intergenerational, education‑first stewardship—using <em>Within Farm’s Reach</em> as a working example you can adapt.</p>
+          <div class="mt-8 flex gap-4">
+            <a href="#/guide" class="rounded-full bg-green-700 px-5 py-3 text-white text-sm font-medium hover:bg-green-800">Read the Guide</a>
+            <a href="#/templates" class="rounded-full border px-5 py-3 text-sm font-medium hover:bg-gray-50">Get Templates</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[16/10] w-full rounded-2xl bg-green-50 shadow-soft overflow-hidden">
+            <video class="w-full h-full object-cover" autoplay muted loop playsinline poster="/assets/hero-poster.jpg">
+              <source src="/assets/hero-loop.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="mt-3 text-xs text-gray-500">Short ambient loop from the farm. Replace <code>/assets/hero-loop.mp4</code> with your video file.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <h2 id="apps">Apps</h2>
-    <ul>
-      <li><a href="https://github.com/WithinFarmsReach/your-app">Your App</a> — link to repo or a release download.</li>
-    </ul>
+  <!-- PROPOSAL SUMMARY -->
+  <section id="proposal" class="py-16 sm:py-24 border-t">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">The Proposal</h2>
+      <p class="mt-6 text-gray-700 prose">
+        <strong>Purpose:</strong> Provide a replicable framework for establishing a <em>member‑funded</em>, non‑charitable <strong>Educational Trust Association</strong> (ETA) to preserve land, enable community learning, and ensure continuity of purpose across generations.
+      </p>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl border shadow-soft">
+          <h3 class="font-semibold mb-2">Member‑Run</h3>
+          <p class="text-sm text-gray-700">All revenue is from memberships (no sponsors, no grants). Surpluses are carried forward for maintenance, equipment, and programs.</p>
+        </div>
+        <div class="p-6 rounded-2xl border shadow-soft">
+          <h3 class="font-semibold mb-2">Trust‑Held Assets</h3>
+          <p class="text-sm text-gray-700">Land and infrastructure are held collectively by the trust—never privatized or subdivided—ensuring long‑term stewardship.</p>
+        </div>
+        <div class="p-6 rounded-2xl border shadow-soft">
+          <h3 class="font-semibold mb-2">Education‑First</h3>
+          <p class="text-sm text-gray-700">Every activity (nursery, workshops, renewable systems) doubles as curriculum for intergenerational learning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2 id="contact">Contact</h2>
-    <p>Email: you@example.com</p>
-  </main>
+  <!-- HOW IT WORKS (high-level) -->
+  <section id="framework" class="py-16 sm:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">How It Works</h2>
+      <div class="mt-8 grid lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-2xl border shadow-soft">
+          <h3 class="font-semibold mb-2">1) Form the Trust</h3>
+          <p class="text-sm text-gray-700">Create a private trust to hold all assets (land, buildings, systems, botanical stock) in perpetuity for educational use.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border shadow-soft">
+          <h3 class="font-semibold mb-2">2) Establish the Association</h3>
+          <p class="text-sm text-gray-700">Adopt bylaws and a member charter. Members have access and voting rights—but no equity ownership.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border shadow-soft">
+          <h3 class="font-semibold mb-2">3) Operate & Reinvest</h3>
+          <p class="text-sm text-gray-700">Run programs and generate revenue solely from memberships. Carry forward surpluses; pay tax only on interest earned.</p>
+        </div>
+      </div>
+      <p class="mt-8 text-sm text-gray-500">Note: Jurisdictional details vary. Consult local law where you operate.</p>
+    </div>
+  </section>
 
-  <footer>© <span id="y"></span> WithinFarm’sReach</footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- CASE STUDY: WITHIN FARM’S REACH -->
+  <section id="example" class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Case Study: Within Farm’s Reach</h2>
+          <p class="mt-6 text-gray-700">Our 6.2‑acre historical property in Southwestern Ontario serves as the example. It integrates heritage orchards, walnut and ginkgo groves, extensive ferns, and renewable‑energy systems (geothermal and heat‑exhaust recovery) into a living campus for ecological and community education.</p>
+          <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-sm text-gray-700">
+            <li>• 170‑year‑old home & streams on site</li>
+            <li>• Geothermal + heat‑exhaust recovery</li>
+            <li>• Hydrangea & apple propagation</li>
+            <li>• Walnut tinctures & heritage apple wine</li>
+            <li>• Fern beds & ginkgo for packaging and tea</li>
+            <li>• Seasonal education & small events</li>
+          </ul>
+        </div>
+        <div>
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Replace these images with real farm photos/videos -->
+            <img src="/assets/farm-1.jpg" class="rounded-xl w-full h-40 object-cover" alt="Farm view" />
+            <img src="/assets/farm-2.jpg" class="rounded-xl w-full h-40 object-cover" alt="Orchard" />
+            <img src="/assets/farm-3.jpg" class="rounded-xl w-full h-40 object-cover" alt="Ferns" />
+            <img src="/assets/farm-4.jpg" class="rounded-xl w-full h-40 object-cover" alt="Hydrangeas" />
+          </div>
+          <p class="mt-3 text-xs text-gray-500">Swap placeholder images in <code>/assets/</code> with your own media.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTS -->
+  <section id="documents" class="py-16 sm:py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Guides & Templates</h2>
+      <p class="mt-6 text-gray-700">Use these documents to draft your own Educational Trust Association. You can adapt directly from our example materials.</p>
+
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Link these to your uploaded files in the repository docs/ folder -->
+        <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Trust_Charter.docx">
+          <h3 class="font-semibold">Trust Charter</h3>
+          <p class="mt-2 text-sm text-gray-700">Legal purpose, asset stewardship, governance, and dissolution terms.</p>
+        </a>
+        <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Organizational_Chart.docx">
+          <h3 class="font-semibold">Organizational Structure</h3>
+          <p class="mt-2 text-sm text-gray-700">Roles, responsibilities, and operational hierarchy.</p>
+        </a>
+        <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Prospectus.docx">
+          <h3 class="font-semibold">Prospectus & Executive Summary</h3>
+          <p class="mt-2 text-sm text-gray-700">Property overview, programs, and financial model.</p>
+        </a>
+        <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Vision_Deck.docx">
+          <h3 class="font-semibold">Vision Deck</h3>
+          <p class="mt-2 text-sm text-gray-700">Story, pillars, and invitation for participation.</p>
+        </a>
+        <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Manifesto.docx">
+          <h3 class="font-semibold">Manifesto</h3>
+          <p class="mt-2 text-sm text-gray-700">Ethics of stewardship and the case for common ground.</p>
+        </a>
+        <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Legacy_Portfolio.docx">
+          <h3 class="font-semibold">Legacy Portfolio</h3>
+          <p class="mt-2 text-sm text-gray-700">One‑file overview of model, assets, and programs.</p>
+        </a>
+      </div>
+      <p class="mt-6 text-xs text-gray-500">Tip: Export your Word docs to PDF and place them in a <code>docs/</code> folder so these links work on GitHub Pages.</p>
+    </div>
+  </section>
+  </div><!-- /#home -->
+
+  <!-- SPA RENDER TARGET -->
+  <main id="spa" class="hidden"></main>
+
+  <!-- TEMPLATES FOR LIGHTWEIGHT PAGES -->
+  <template id="page-guide">
+    <section class="py-16 sm:py-24">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose">
+        <h1 class="text-4xl font-semibold tracking-tight">Guide: Build an Educational Trust Association</h1>
+        <p><strong>Three phases:</strong> Form the Trust → Establish the Association → Operate & Reinvest. This guide distills the member‑run, non‑charitable pathway in Canada and similar jurisdictions.</p>
+        <ol>
+          <li><strong>Form the Trust:</strong> Draft a private trust deed to hold land and assets in perpetuity for education.</li>
+          <li><strong>Establish the Association:</strong> Adopt bylaws and membership rules (no equity). Democratic governance via a Council of Stewards.</li>
+          <li><strong>Operate & Reinvest:</strong> Membership revenue only. Surplus carried forward. Tax applies only to interest on reserves.</li>
+        </ol>
+        <p>See the <a href="#/templates">Templates</a> page for ready‑to‑adapt documents.</p>
+      </div>
+    </section>
+  </template>
+
+  <template id="page-templates">
+    <section class="py-16 sm:py-24 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-semibold tracking-tight">Templates & Downloads</h1>
+        <p class="mt-4 text-gray-700">Upload these files to your GitHub repo under <code>/docs/</code>. Links below are wired to that folder.</p>
+        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Trust_Charter.docx" download>
+            <h3 class="font-semibold">Trust Charter (.docx)</h3>
+            <p class="mt-2 text-sm text-gray-700">Purpose, asset stewardship, governance, dissolution.</p>
+          </a>
+          <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Organizational_Chart.docx" download>
+            <h3 class="font-semibold">Organizational Structure (.docx)</h3>
+            <p class="mt-2 text-sm text-gray-700">Roles, responsibilities, operational hierarchy.</p>
+          </a>
+          <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Prospectus.docx" download>
+            <h3 class="font-semibold">Prospectus (.docx)</h3>
+            <p class="mt-2 text-sm text-gray-700">Property overview, programs, financial model.</p>
+          </a>
+          <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Vision_Deck.docx" download>
+            <h3 class="font-semibold">Vision Deck (.docx)</h3>
+            <p class="mt-2 text-sm text-gray-700">Story, pillars, and invitation for participation.</p>
+          </a>
+          <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Manifesto.docx" download>
+            <h3 class="font-semibold">Manifesto (.docx)</h3>
+            <p class="mt-2 text-sm text-gray-700">Ethics of stewardship and the case for common ground.</p>
+          </a>
+          <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Legacy_Portfolio.docx" download>
+            <h3 class="font-semibold">Legacy Portfolio (.docx)</h3>
+            <p class="mt-2 text-sm text-gray-700">One‑file overview of model, assets, and programs.</p>
+          </a>
+        </div>
+        <p class="mt-6 text-xs text-gray-500">If you later export PDFs with the same filenames (but .pdf extension), you can add parallel links.</p>
+      </div>
+    </section>
+  </template>
+
+  <template id="page-about">
+    <section class="py-16 sm:py-24">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose">
+        <h1 class="text-4xl font-semibold tracking-tight">About Within Farm’s Reach</h1>
+        <p>Within Farm’s Reach is a real‑world example of a member‑run Educational Trust Association: a 6.2‑acre historical property integrating orchards, ferns, ginkgo, walnuts, and renewable energy into a living campus. The proposal here turns that experience into a replicable model for families and communities.</p>
+        <p>We align with the spirit of the Common Ground vision: land as living commons, education as public good, and reinvestment as a rule.</p>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    // Simple hash router for lightweight multi-page nav
+    const homeEl = document.getElementById('home');
+    const spaEl = document.getElementById('spa');
+
+    const routes = {
+      '#/': null,
+      '#/guide': 'page-guide',
+      '#/templates': 'page-templates',
+      '#/about': 'page-about',
+      '#/media': null, // falls back to home where Media section exists
+      '#/faq': null,
+      '#/contact': null
+    };
+
+    function render(){
+      const hash = location.hash || '#/';
+      const tplId = routes[hash];
+      if(!tplId){
+        // show homepage
+        spaEl.classList.add('hidden');
+        spaEl.innerHTML = '';
+        homeEl.classList.remove('hidden');
+        return;
+      }
+      const tpl = document.getElementById(tplId);
+      if(tpl){
+        homeEl.classList.add('hidden');
+        spaEl.classList.remove('hidden');
+        spaEl.innerHTML = '';
+        spaEl.appendChild(tpl.content.cloneNode(true));
+        window.scrollTo({top:0, behavior:'smooth'});
+      }
+    }
+    window.addEventListener('hashchange', render);
+    window.addEventListener('DOMContentLoaded', render);
+  </script>
+
+  <!-- MEDIA -->
+  <section id="media" class="py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Media & Field Notes</h2>
+      <p class="mt-6 text-gray-700">Short clips and galleries make the learning vivid. Replace the placeholders below with your own videos, photo essays, and “moving pictures” of wildlife.</p>
+
+      <div class="mt-8 grid lg:grid-cols-2 gap-8">
+        <!-- Video embed example: replace with your YouTube/Vimeo or self-hosted mp4 -->
+        <div class="rounded-2xl overflow-hidden shadow-soft border">
+          <div class="aspect-[16/9] bg-black/5">
+            <iframe class="w-full h-full" src= "https://youtu.be/s42jtsDMUWE" title="Farm Overview" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold">Farm Overview (Sample)</h3>
+            <p class="text-sm text-gray-700">A quick tour of the grounds and systems. Replace with your published video.</p>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-soft border">
+          <div class="aspect-[16/9]">
+            <video class="w-full h-full object-cover" controls poster="/assets/wildlife-cover.jpg">
+              <source src="/assets/wildlife-reel.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold">Wildlife & Seasons Reel</h3>
+            <p class="text-sm text-gray-700">Add your seasonal clips to bring the habitat and migrations to life.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo grid -->
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4">
+        <img src="/assets/gallery-1.jpg" class="w-full h-44 object-cover rounded-xl" alt="Gallery" />
+        <img src="/assets/gallery-2.jpg" class="w-full h-44 object-cover rounded-xl" alt="Gallery" />
+        <img src="/assets/gallery-3.jpg" class="w-full h-44 object-cover rounded-xl" alt="Gallery" />
+        <img src="/assets/gallery-4.jpg" class="w-full h-44 object-cover rounded-xl" alt="Gallery" />
+        <img src="/assets/gallery-5.jpg" class="w-full h-44 object-cover rounded-xl" alt="Gallery" />
+        <img src="/assets/gallery-6.jpg" class="w-full h-44 object-cover rounded-xl" alt="Gallery" />
+      </div>
+      <p class="mt-3 text-xs text-gray-500">Swap <code>/assets/gallery-*.jpg</code> placeholders with your photos.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 sm:py-24 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Frequently Asked Questions</h2>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <div class="p-6 bg-white rounded-2xl border shadow-soft">
+          <h3 class="font-semibold">Is this a charity?</h3>
+          <p class="mt-2 text-sm text-gray-700">No. This is a member‑run educational association with assets held in a private trust. Surpluses are carried forward for programs and maintenance; only interest on capital is taxable.</p>
+        </div>
+        <div class="p-6 bg-white rounded-2xl border shadow-soft">
+          <h3 class="font-semibold">How do members participate?</h3>
+          <p class="mt-2 text-sm text-gray-700">Through annual or lifetime memberships, voting, work days, workshops, and seasonal events. There is no equity ownership.</p>
+        </div>
+        <div class="p-6 bg-white rounded-2xl border shadow-soft">
+          <h3 class="font-semibold">Can other farms copy this?</h3>
+          <p class="mt-2 text-sm text-gray-700">Yes. The guides and templates are designed to be adapted in Canada and in jurisdictions with similar trust/association frameworks.</p>
+        </div>
+        <div class="p-6 bg-white rounded-2xl border shadow-soft">
+          <h3 class="font-semibold">What about tax?</h3>
+          <p class="mt-2 text-sm text-gray-700">Operations are funded by memberships. Surpluses roll forward. Only interest derived from carried‑forward capital is taxed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact" class="py-16 sm:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Ready to Start Your Educational Trust?</h2>
+      <p class="mt-6 text-gray-700">Gather your core team, review the guides, and adapt the templates to your land and community. When you’re ready, get in touch.</p>
+      <div class="mt-8">
+        <!-- Replace mailto with your preferred contact address or form service -->
+        <a href="mailto:commongroundtrust@protonmail.com" class="inline-flex items-center justify-center rounded-full bg-green-700 px-6 py-3 text-white text-sm font-medium hover:bg-green-800">Contact the Within Farm’s Reach Team</a>
+      </div>
+      <p class="mt-4 text-xs text-gray-500">Email can be changed in the HTML. Consider adding a simple static form service if needed.</p>
+    </div>
+  </section>
+
+  <footer class="border-t">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-sm text-gray-600 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© <span id="year"></span> Within Farm’s Reach. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-gray-900" href="#proposal">Proposal</a>
+        <a class="hover:text-gray-900" href="#documents">Documents</a>
+        <a class="hover:text-gray-900" href="#media">Media</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
-<img src="assets/Whislter.png" alt="Whislter-style artwork" width="400">
