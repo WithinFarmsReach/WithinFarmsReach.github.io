@@ -68,16 +68,30 @@
           <div class="relative">
             <!-- Hero YouTube embed (your video) -->
             <div class="aspect-[16/9] w-full rounded-2xl bg-black shadow-soft overflow-hidden">
-<iframe
-  class="w-full h-full"
-  src="https://www.youtube.com/embed/UqJgNQqt1Qg?autoplay=1&mute=0&playsinline=1&loop=1&playlist=UqJgNQqt1Qg&controls=1&modestbranding=1&rel=0"
-  title="Within Farm’s Reach — Hero Video"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen
-  referrerpolicy="strict-origin-when-cross-origin">
-</iframe>
-            </div>
+<!-- OVERVIEW video section (place this just before #documents) -->
+<section class="py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="rounded-2xl overflow-hidden shadow-soft border relative">
+      <div class="aspect-[16/9] bg-black">
+        <div id="overviewPlayer" class="w-full h-full"></div>
+      </div>
+      <div class="p-4">
+        <h3 class="font-semibold">Within Farm’s Reach — Overview</h3>
+        <p class="text-sm text-gray-700">A brief introduction to the model and grounds.</p>
+      </div>
+
+      <!-- Unmute overlay -->
+      <button
+        id="overviewUnmute"
+        class="absolute bottom-3 right-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white"
+        type="button"
+        aria-label="Unmute video"
+      >
+        🔊 Unmute
+      </button>
+    </div>
+  </div>
+</section>            </div>
           </div>
         </div>
       </div>
@@ -179,15 +193,96 @@
 
     <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
       <div class="aspect-[16/9] bg-black/5">
-<iframe
-  class="w-full h-full"
-  src="https://www.youtube.com/embed/sSPoZu1ibMM?autoplay=1&mute=0&playsinline=1&loop=1&playlist=sSPoZu1ibMM&controls=1&modestbranding=1&rel=0"
-  title="Within Farm’s Reach — Overview Video"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen
-  referrerpolicy="strict-origin-when-cross-origin">
-</iframe>
+<!-- YouTube IFrame API + init for both players (autoplay muted; unmute on first gesture) -->
+<script>
+  // Your two video IDs
+  const HERO_ID = "UqJgNQqt1Qg";       // hero video (top of page)
+  const OVERVIEW_ID = "sSPoZu1ibMM";    // overview video (above Guides & Templates)
+
+  let heroPlayer, overviewPlayer;
+  let apiReady = false;
+  let unmuted = false;
+
+  // Load YouTube IFrame API
+  (function loadYT() {
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  })();
+
+  // Called by YT API
+  function onYouTubeIframeAPIReady() {
+    apiReady = true;
+    // Hero
+    heroPlayer = new YT.Player("heroPlayer", {
+      videoId: HERO_ID,
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        playlist: HERO_ID,
+        controls: 1,
+        modestbranding: 1,
+        rel: 0,
+        playsinline: 1
+      },
+      events: {
+        onReady: (e) => e.target.playVideo()
+      }
+    });
+
+    // Overview
+    overviewPlayer = new YT.Player("overviewPlayer", {
+      videoId: OVERVIEW_ID,
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        playlist: OVERVIEW_ID,
+        controls: 1,
+        modestbranding: 1,
+        rel: 0,
+        playsinline: 1
+      },
+      events: {
+        onReady: (e) => e.target.playVideo()
+      }
+    });
+  }
+  window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
+  // Helper: unmute both (first user gesture)
+  function unmuteAll() {
+    if (unmuted || !apiReady) return;
+    try {
+      heroPlayer && heroPlayer.unMute();
+      overviewPlayer && overviewPlayer.unMute();
+      heroPlayer && heroPlayer.setVolume(100);
+      overviewPlayer && overviewPlayer.setVolume(100);
+      unmuted = true;
+      // Hide buttons
+      const b1 = document.getElementById("heroUnmute");
+      const b2 = document.getElementById("overviewUnmute");
+      b1 && (b1.style.display = "none");
+      b2 && (b2.style.display = "none");
+    } catch (e) {
+      // no-op
+    }
+  }
+
+  // Unmute buttons
+  document.addEventListener("DOMContentLoaded", () => {
+    const b1 = document.getElementById("heroUnmute");
+    const b2 = document.getElementById("overviewUnmute");
+    b1 && b1.addEventListener("click", unmuteAll);
+    b2 && b2.addEventListener("click", unmuteAll);
+
+    // Also unmute on first page click/tap anywhere
+    window.addEventListener("click", unmuteAll, { once: true });
+    window.addEventListener("touchstart", unmuteAll, { once: true });
+  });
+</script>
     </div>
       <div class="p-4">
         <h3 class="font-semibold">Within Farm’s Reach — Overview</h3>
