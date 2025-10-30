@@ -21,6 +21,8 @@
     html{scroll-behavior:smooth}
     .prose p{margin:0 0 1rem}
     .shadow-soft{box-shadow:0 10px 25px rgba(0,0,0,.08)}
+    .player-wrap{position:relative}
+    .unmute-btn{position:absolute; right:.75rem; bottom:.75rem}
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -56,7 +58,7 @@
               <span class="text-green-700">Designed For Family Farms & Estates</span>
             </h1>
             <p class="mt-6 text-lg text-gray-700">
-              This site outlines a practical, lawful pathway to protect land and create transgenerational, education-first stewardship—using a
+              This site outlines a practical, lawful pathway to protect land and create transgenerational, education-first stewardship—using
               <em>Within Farm’s Reach</em> as an example you can adapt.
             </p>
             <div class="mt-8 flex gap-4">
@@ -65,20 +67,11 @@
             </div>
           </div>
 
-          <div class="relative">
-            <!-- HERO YouTube player target -->
-            <div class="aspect-[16/9] w-full rounded-2xl bg-black shadow-soft overflow-hidden relative">
-              <div id="heroPlayer" class="w-full h-full"></div>
-              <!-- Unmute overlay -->
-              <button
-                id="heroUnmute"
-                class="absolute bottom-3 right-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white"
-                type="button"
-                aria-label="Unmute hero video"
-              >
-                🔊 Unmute
-              </button>
-            </div>
+          <div class="aspect-[16/9] w-full rounded-2xl bg-black shadow-soft overflow-hidden player-wrap">
+            <div id="heroPlayer" class="w-full h-full"></div>
+            <button id="heroUnmute" class="unmute-btn rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white" type="button" aria-label="Unmute hero video">
+              🔊 Unmute
+            </button>
           </div>
         </div>
       </div>
@@ -159,7 +152,6 @@
           </div>
           <div>
             <div class="grid grid-cols-2 gap-4">
-              <!-- Replace these images with real farm photos/videos -->
               <img src="/assets/farm-1.png" class="rounded-xl w-full h-40 object-cover" alt="Ginkgo leaves" />
               <img src="/assets/farm-2.png" class="rounded-xl w-full h-40 object-cover" alt="Orchard blossoms" />
               <img src="/assets/farm-3.png" class="rounded-xl w-full h-40 object-cover" alt="Ornamentals" />
@@ -167,51 +159,43 @@
               <img src="/assets/farm-5.png" class="rounded-xl w-full h-40 object-cover" alt="Blooming magnolia" />
               <img src="/assets/farm-6.png" class="rounded-xl w-full h-40 object-cover" alt="Ferns under canopy" />
             </div>
+          </div>
         </div>
       </div>
     </section>
-</section>
 
-<!-- ORIGINS VIDEO -->
-<section id="origins-video" class="py-12 sm:py-16 border-t">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Origins Video</h2>
-    <p class="mt-3 text-gray-700">The personal journey that gave rise to the Within Farm’s Reach trust model.</p>
+    <!-- ORIGINS VIDEO (simple iframe; stays muted unless user unmutes in player UI) -->
+    <section id="origins-video" class="py-12 sm:py-16 border-t">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Origins Video</h2>
+        <p class="mt-3 text-gray-700">The personal journey that gave rise to the Within Farm’s Reach trust model.</p>
 
-    <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border relative">
-      <div class="aspect-[16/9] bg-black">
-        <iframe
-          class="w-full h-full"
-          src="https://www.youtube.com/embed/RQcPPQRmO04?autoplay=0&mute=1&loop=1&playlist=RQcPPQRmO04&rel=0&modestbranding=1&playsinline=1"
-          title="Within Farm’s Reach Origins"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
+          <div class="aspect-[16/9] bg-black">
+            <iframe
+              class="w-full h-full"
+              src="https://www.youtube.com/embed/RQcPPQRmO04?autoplay=0&mute=1&loop=1&playlist=RQcPPQRmO04&rel=0&modestbranding=1&playsinline=1"
+              title="Within Farm’s Reach Origins"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Overview Video (placed just before Guides & Templates) -->
-    <!-- Overview Video (placed just before Guides & Templates) -->
+    <!-- OVERVIEW VIDEO (just before Guides & Templates) -->
     <section id="overview-video" class="py-12 sm:py-16 border-t">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Overview Video</h2>
         <p class="mt-3 text-gray-700">A closer look at the energy recovery system build in action.</p>
 
-        <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border relative">
+        <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border player-wrap">
           <div class="aspect-[16/9] bg-black">
-            <!-- OVERVIEW YouTube player target -->
             <div id="overviewPlayer" class="w-full h-full"></div>
           </div>
-          <!-- Unmute overlay -->
-          <button
-            id="overviewUnmute"
-            class="absolute bottom-3 right-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white"
-            type="button"
-            aria-label="Unmute overview video"
-          >
+          <button id="overviewUnmute" class="unmute-btn rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white" type="button" aria-label="Unmute overview video">
             🔊 Unmute
           </button>
         </div>
@@ -225,7 +209,6 @@
         <p class="mt-6 text-gray-700">Use these documents to draft your own Educational Trust & Association. You can adapt directly from the example materials.</p>
 
         <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Link these to your uploaded files in the repository docs/ folder -->
           <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Trust_Charter.docx">
             <h3 class="font-semibold">Trust Charter</h3>
             <p class="mt-2 text-sm text-gray-700">Legal purpose, asset stewardship, governance, and dissolution terms.</p>
@@ -319,12 +302,12 @@
           Within Farm’s Reach is a real-world example of an Educational Trust Association: a 6.2-acre, well-developed historical property with diverse natural resources and renewable energy devoted to an education-based, sustainable farm and estate model.
           The proposal here turns that experience into a replicable, economical, transgenerational model for families and communities.
         </p>
-<p>
-  We align with the spirit of the Common Ground vision: land as living commons, education as public good, and reinvestment as a rule.
-  <a href="https://commongroundfilm.org/" target="_blank" rel="noopener noreferrer" class="text-green-700 underline underline-offset-2 hover:text-green-800">
-    Visit Common Ground
-  </a>
-</p>
+        <p>
+          We align with the spirit of the Common Ground vision: land as living commons, education as public good, and reinvestment as a rule.
+          <a href="https://commongroundfilm.org/" target="_blank" rel="noopener noreferrer" class="text-green-700 underline underline-offset-2 hover:text-green-800">
+            Visit Common Ground
+          </a>
+        </p>
       </div>
     </section>
   </template>
@@ -339,7 +322,7 @@
       '#/guide': 'page-guide',
       '#/templates': 'page-templates',
       '#/about': 'page-about',
-      '#/media': null, // falls back to home where Media content exists (if added)
+      '#/media': null,
       '#/faq': null,
       '#/contact': null
     };
@@ -421,12 +404,9 @@
     </div>
   </footer>
 
-  <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
-  <!-- YouTube IFrame API and unified player logic (place once, just before </body>) -->
+  <!-- YouTube IFrame API and player logic -->
   <script>
     // Video IDs
     const HERO_ID = "UqJgNQqt1Qg";     // HERO (top of page)
@@ -434,7 +414,6 @@
 
     let heroPlayer, overviewPlayer;
     let apiReady = false;
-    let unmuted = false;
 
     // Load YouTube IFrame API
     (function loadYT() {
@@ -448,79 +427,91 @@
     function onYouTubeIframeAPIReady() {
       apiReady = true;
 
-      // HERO player
       if (document.getElementById("heroPlayer")) {
         heroPlayer = new YT.Player("heroPlayer", {
           videoId: HERO_ID,
           playerVars: {
             autoplay: 1,
-            mute: 1,              // required for autoplay on most browsers
+            mute: 1,
             loop: 1,
-            playlist: HERO_ID,    // required for looping a single video
+            playlist: HERO_ID,
             controls: 1,
             modestbranding: 1,
             rel: 0,
             playsinline: 1
           },
-          events: {
-            onReady: e => e.target.playVideo()
-          }
+          events: { onReady: e => e.target.playVideo() }
         });
       }
 
-      // OVERVIEW player
       if (document.getElementById("overviewPlayer")) {
         overviewPlayer = new YT.Player("overviewPlayer", {
           videoId: OVERVIEW_ID,
           playerVars: {
             autoplay: 1,
-            mute: 1,                 // required for autoplay on most browsers
+            mute: 1,
             loop: 1,
-            playlist: OVERVIEW_ID,   // required for looping a single video
+            playlist: OVERVIEW_ID,
             controls: 1,
             modestbranding: 1,
             rel: 0,
             playsinline: 1
           },
-          events: {
-            onReady: e => e.target.playVideo()
-          }
+          events: { onReady: e => e.target.playVideo() }
         });
       }
+
+      setupViewportControl();
+      setupPerPlayerUnmute();
     }
     window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
-    // Unmute both players after the first user gesture
-    function unmuteAll() {
-      if (unmuted || !apiReady) return;
-      try {
-        if (heroPlayer && heroPlayer.unMute) {
-          heroPlayer.unMute();
-          heroPlayer.setVolume(100);
-        }
-        if (overviewPlayer && overviewPlayer.unMute) {
-          overviewPlayer.unMute();
-          overviewPlayer.setVolume(100);
-        }
-        unmuted = true;
-        const b1 = document.getElementById("heroUnmute");
-        const b2 = document.getElementById("overviewUnmute");
-        if (b1) b1.style.display = "none";
-        if (b2) b2.style.display = "none";
-      } catch (_) {}
+    // Only play the one on screen; pause the other
+    function setupViewportControl() {
+      if (!("IntersectionObserver" in window)) return;
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const el = entry.target;
+          const isVisible = entry.intersectionRatio >= 0.5;
+          if (!apiReady) return;
+
+          if (el.id === "heroPlayer" && heroPlayer) {
+            if (isVisible) heroPlayer.playVideo(); else heroPlayer.pauseVideo();
+          }
+          if (el.id === "overviewPlayer" && overviewPlayer) {
+            if (isVisible) overviewPlayer.playVideo(); else overviewPlayer.pauseVideo();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      const heroEl = document.getElementById("heroPlayer");
+      const overviewEl = document.getElementById("overviewPlayer");
+      heroEl && io.observe(heroEl);
+      overviewEl && io.observe(overviewEl);
     }
 
-    // Wire up unmute triggers
-    document.addEventListener("DOMContentLoaded", () => {
-      const b1 = document.getElementById("heroUnmute");
-      const b2 = document.getElementById("overviewUnmute");
-      if (b1) b1.addEventListener("click", unmuteAll, { once: true });
-      if (b2) b2.addEventListener("click", unmuteAll, { once: true });
+    // Each player has its own unmute
+    function setupPerPlayerUnmute() {
+      const heroBtn = document.getElementById("heroUnmute");
+      const overBtn = document.getElementById("overviewUnmute");
 
-      // Also allow any page click/tap to unmute once
-      window.addEventListener("click", unmuteAll, { once: true });
-      window.addEventListener("touchstart", unmuteAll, { once: true });
-    });
+      heroBtn && heroBtn.addEventListener("click", () => {
+        if (apiReady && heroPlayer && heroPlayer.unMute) {
+          heroPlayer.unMute();
+          heroPlayer.setVolume(100);
+          heroBtn.style.display = "none";
+        }
+      });
+
+      overBtn && overBtn.addEventListener("click", () => {
+        if (apiReady && overviewPlayer && overviewPlayer.unMute) {
+          overviewPlayer.unMute();
+          overviewPlayer.setVolume(100);
+          overBtn.style.display = "none";
+        }
+      });
+    }
   </script>
 </body>
 </html>
