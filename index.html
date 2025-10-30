@@ -21,8 +21,12 @@
     html{scroll-behavior:smooth}
     .prose p{margin:0 0 1rem}
     .shadow-soft{box-shadow:0 10px 25px rgba(0,0,0,.08)}
-    .player-wrap{position:relative}
-    .unmute-btn{position:absolute; right:.75rem; bottom:.75rem}
+
+    /* Robust video wrapper: prevents aspect ratio collapse/overlap */
+    .video-box{position:relative;background:#000;border-radius:1rem;overflow:hidden}
+    .video-box::before{content:"";display:block;padding-bottom:56.25%} /* 16:9 */
+    .video-iframe{position:absolute;inset:0}
+    .unmute-btn{position:absolute;right:.75rem;bottom:.75rem;z-index:2}
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -67,8 +71,9 @@
             </div>
           </div>
 
-          <div class="aspect-[16/9] w-full rounded-2xl bg-black shadow-soft overflow-hidden player-wrap">
-            <div id="heroPlayer" class="w-full h-full"></div>
+          <!-- HERO player (solid 16:9 wrapper) -->
+          <div class="video-box shadow-soft border">
+            <div id="heroPlayer" class="video-iframe"></div>
             <button id="heroUnmute" class="unmute-btn rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white" type="button" aria-label="Unmute hero video">
               🔊 Unmute
             </button>
@@ -191,10 +196,8 @@
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Overview Video</h2>
         <p class="mt-3 text-gray-700">A closer look at the energy recovery system build in action.</p>
 
-        <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border player-wrap">
-          <div class="aspect-[16/9] bg-black">
-            <div id="overviewPlayer" class="w-full h-full"></div>
-          </div>
+        <div class="video-box shadow-soft border">
+          <div id="overviewPlayer" class="video-iframe"></div>
           <button id="overviewUnmute" class="unmute-btn rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white" type="button" aria-label="Unmute overview video">
             🔊 Unmute
           </button>
@@ -215,7 +218,7 @@
           </a>
           <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Organizational_Chart.docx">
             <h3 class="font-semibold">Organizational Structure</h3>
-            <p class="mt-2 text-sm text-gray-700">Roles, responsibilities, and operational hierarchy.</p>
+            <p class="mt-2 text-sm text-gray-700">Roles, responsibilities, operational hierarchy.</p>
           </a>
           <a class="block p-6 rounded-2xl border bg-white hover:bg-gray-50 shadow-soft" href="docs/WithinFarmsReach_Prospectus.docx">
             <h3 class="font-semibold">Prospectus & Executive Summary</h3>
@@ -415,13 +418,21 @@
     let heroPlayer, overviewPlayer;
     let apiReady = false;
 
-    // Load YouTube IFrame API
+    // Load YouTube IFrame API once
     (function loadYT() {
       const tag = document.createElement("script");
       tag.src = "https://www.youtube.com/iframe_api";
       const firstScriptTag = document.getElementsByTagName("script")[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     })();
+
+    // Pause whichever isn't the active one
+    function pauseOther(which){
+      try{
+        if(which === "hero"){ overviewPlayer && overviewPlayer.pauseVideo(); }
+        if(which === "overview"){ heroPlayer && heroPlayer.pauseVideo(); }
+      }catch(_){}
+    }
 
     // Called by YT API
     function onYouTubeIframeAPIReady() {
@@ -432,15 +443,20 @@
           videoId: HERO_ID,
           playerVars: {
             autoplay: 1,
-            mute: 1,
+            mute: 1,           // required for autoplay
             loop: 1,
-            playlist: HERO_ID,
+            playlist: HERO_ID, // required for single-video loop
             controls: 1,
             modestbranding: 1,
             rel: 0,
             playsinline: 1
           },
-          events: { onReady: e => e.target.playVideo() }
+          events: {
+            onReady: e => e.target.playVideo(),
+            onStateChange: e => {
+              if (e.data === YT.PlayerState.PLAYING) pauseOther("hero");
+            }
+          }
         });
       }
 
@@ -449,15 +465,20 @@
           videoId: OVERVIEW_ID,
           playerVars: {
             autoplay: 1,
-            mute: 1,
+            mute: 1,              // required for autoplay
             loop: 1,
-            playlist: OVERVIEW_ID,
+            playlist: OVERVIEW_ID, // required for single-video loop
             controls: 1,
             modestbranding: 1,
             rel: 0,
             playsinline: 1
           },
-          events: { onReady: e => e.target.playVideo() }
+          events: {
+            onReady: e => e.target.playVideo(),
+            onStateChange: e => {
+              if (e.data === YT.PlayerState.PLAYING) pauseOther("overview");
+            }
+          }
         });
       }
 
@@ -466,7 +487,7 @@
     }
     window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
-    // Only play the one on screen; pause the other
+    // Only play the one that's >= 50% visible
     function setupViewportControl() {
       if (!("IntersectionObserver" in window)) return;
 
@@ -477,10 +498,10 @@
           if (!apiReady) return;
 
           if (el.id === "heroPlayer" && heroPlayer) {
-            if (isVisible) heroPlayer.playVideo(); else heroPlayer.pauseVideo();
+            isVisible ? heroPlayer.playVideo() : heroPlayer.pauseVideo();
           }
           if (el.id === "overviewPlayer" && overviewPlayer) {
-            if (isVisible) overviewPlayer.playVideo(); else overviewPlayer.pauseVideo();
+            isVisible ? overviewPlayer.playVideo() : overviewPlayer.pauseVideo();
           }
         });
       }, { threshold: 0.5 });
@@ -491,7 +512,7 @@
       overviewEl && io.observe(overviewEl);
     }
 
-    // Each player has its own unmute
+    // Per-player unmute (and ensure only one is audible)
     function setupPerPlayerUnmute() {
       const heroBtn = document.getElementById("heroUnmute");
       const overBtn = document.getElementById("overviewUnmute");
@@ -501,6 +522,7 @@
           heroPlayer.unMute();
           heroPlayer.setVolume(100);
           heroBtn.style.display = "none";
+          pauseOther("hero");
         }
       });
 
@@ -509,6 +531,7 @@
           overviewPlayer.unMute();
           overviewPlayer.setVolume(100);
           overBtn.style.display = "none";
+          pauseOther("overview");
         }
       });
     }
