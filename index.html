@@ -6,6 +6,10 @@
   <title>Within Farm’s Reach — Educational Trust Association Proposal</title>
   <meta name="description" content="A replicable Educational Trust Association model using Within Farm’s Reach, with a real-world case example for protecting arable family estates and farms via creating transgenerational trust/associations." />
 
+ <!-- Performance: preconnect to external assets -->
+<link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+
   <!-- Tailwind CSS via CDN (works on GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -14,9 +18,28 @@
   <meta property="og:description" content="Use our real-world case example to avoid pitfalls and build your own Educational Trust Association for land, learning, and legacy." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://withinfarmsreach.github.io/" />
-  <meta property="og:image" content="/assets/og-cover.png" />
+<meta property="og:image" content="https://withinfarmsreach.github.io/assets/og-cover.png" />
 
-  <!-- Simple CSS tweaks -->
+ 
+<!-- Open Graph extras -->
+<meta property="og:site_name" content="Within Farm’s Reach" />
+<meta property="og:locale" content="en_CA" />
+
+<!-- Canonical -->
+<link rel="canonical" href="https://withinfarmsreach.github.io/" />
+
+<!-- Favicon / PWA basics -->
+<link rel="icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta name="theme-color" content="#166534" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Within Farm’s Reach — Educational Trust Association Proposal" />
+<meta name="twitter:description" content="Use our real-world case example to avoid pitfalls and build your own Educational Trust Association for land, learning, and legacy." />
+<meta name="twitter:image" content="https://withinfarmsreach.github.io/assets/og-cover.png" />
+ <!-- Simple CSS tweaks -->
   <style>
     html{scroll-behavior:smooth}
     .prose p{margin:0 0 1rem}
@@ -37,8 +60,7 @@
   height:100%;
   display:block;
 }
-
-.unmute-btn{position:absolute;right:.75rem;bottom:.75rem;z-index:2}    .unmute-btn{position:absolute;right:.75rem;bottom:.75rem;z-index:2}
+.unmute-btn{position:absolute;right:.75rem;bottom:.75rem;z-index:2}
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -60,6 +82,33 @@
       </div>
     </div>
   </header>
+  <!-- A11y: Skip to main content -->
+  <a href="#proposal"
+     class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50
+            focus:bg-white focus:text-green-700 focus:border focus:border-green-700
+            focus:rounded-full focus:px-4 focus:py-2">
+    Skip to main content
+  </a>
+
+  <!-- Noscript fallbacks for videos -->
+  <noscript>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <p class="text-sm text-gray-700">
+        JavaScript is disabled. Watch the videos on YouTube:
+        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=UqJgNQqt1Qg" target="_blank" rel="noopener">
+          Hero video
+        </a>
+        ·
+        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=sSPoZu1ibMM" target="_blank" rel="noopener">
+          Overview video
+        </a>
+        ·
+        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=RQcPPQRmO04" target="_blank" rel="noopener">
+          Origins video
+        </a>
+      </p>
+    </div>
+  </noscript>
 
   <!-- SPA CONTAINER START -->
   <div id="home">
@@ -168,13 +217,13 @@
             </ul>
           </div>
           <div>
-            <div class="grid grid-cols-2 gap-4">
-              <img src="/assets/farm-1.png" class="rounded-xl w-full h-40 object-cover" alt="Ginkgo leaves" />
-              <img src="/assets/farm-2.png" class="rounded-xl w-full h-40 object-cover" alt="Orchard blossoms" />
-              <img src="/assets/farm-3.png" class="rounded-xl w-full h-40 object-cover" alt="Ornamentals" />
-              <img src="/assets/farm-4.png" class="rounded-xl w-full h-40 object-cover" alt="Climbing tree hydrangeas and Golden Transparent apple tree" />
-              <img src="/assets/farm-5.png" class="rounded-xl w-full h-40 object-cover" alt="Blooming magnolia" />
-              <img src="/assets/farm-6.png" class="rounded-xl w-full h-40 object-cover" alt="Ferns under canopy" />
+<div class="grid grid-cols-2 gap-4">
+  <img src="/assets/farm-1.png" loading="lazy" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ginkgo leaves" />
+  <img src="/assets/farm-2.png" loading="lazy" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Orchard blossoms" />
+  <img src="/assets/farm-3.png" loading="lazy" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ornamentals" />
+  <img src="/assets/farm-4.png" loading="lazy" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Climbing tree hydrangeas and Golden Transparent apple tree" />
+  <img src="/assets/farm-5.png" loading="lazy" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Blooming magnolia" />
+  <img src="/assets/farm-6.png" loading="lazy" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ferns under canopy" />
             </div>
           </div>
         </div>
@@ -452,18 +501,20 @@ allowfullscreen>
     function onYouTubeIframeAPIReady() {
       apiReady = true;
 
-    if (document.getElementById("heroPlayer")) {
+if (document.getElementById("heroPlayer")) {
   heroPlayer = new YT.Player("heroPlayer", {
+    host: 'https://www.youtube-nocookie.com', // privacy-enhanced host
     videoId: HERO_ID,
     playerVars: {
-      autoplay: 0,       // don't start immediately; wait for visibility
+      autoplay: 0,       // wait for visibility
       mute: 1,
       loop: 1,
       playlist: HERO_ID,
       controls: 1,
       modestbranding: 1,
       rel: 0,
-      playsinline: 1
+      playsinline: 1,
+      iv_load_policy: 3  // minimize in-video overlays/annotations
     },
     events: {
       onStateChange: e => {
@@ -471,28 +522,28 @@ allowfullscreen>
       }
     }
   });
-}
-      if (document.getElementById("overviewPlayer")) {
-        overviewPlayer = new YT.Player("overviewPlayer", {
-          videoId: OVERVIEW_ID,
-          playerVars: {
-            autoplay: 0,          // let IntersectionObserver control playback
-            mute: 1,              // required for autoplay
-            loop: 1,
-            playlist: OVERVIEW_ID, // required for single-video loop
-            controls: 1,
-            modestbranding: 1,
-            rel: 0,
-            playsinline: 1
-          },
-          events: {
-            onStateChange: e => {
-              if (e.data === YT.PlayerState.PLAYING) pauseOther("overview");
-            }
-          }
-        });
+}if (document.getElementById("overviewPlayer")) {
+  overviewPlayer = new YT.Player("overviewPlayer", {
+    host: 'https://www.youtube-nocookie.com', // privacy-enhanced host
+    videoId: OVERVIEW_ID,
+    playerVars: {
+      autoplay: 0,          // IntersectionObserver controls playback
+      mute: 1,
+      loop: 1,
+      playlist: OVERVIEW_ID, // required for single-video loop
+      controls: 1,
+      modestbranding: 1,
+      rel: 0,
+      playsinline: 1,
+      iv_load_policy: 3     // minimize in-video overlays/annotations
+    },
+    events: {
+      onStateChange: e => {
+        if (e.data === YT.PlayerState.PLAYING) pauseOther("overview");
       }
-
+    }
+  });
+}
       setupViewportControl();
       setupPerPlayerUnmute();
     }
