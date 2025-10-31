@@ -42,7 +42,7 @@
           <a href="#/about" class="hover:text-green-700">About</a>
           <a href="#/media" class="hover:text-green-700">Media</a>
           <a href="#/faq" class="hover:text-green-700">FAQ</a>
-          <a href="#/contact" class="hover:text-green-700">Contact</a>
+          <a href="#contact" class="hover:text-green-700">Contact</a>
         </nav>
         <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800">Start Your Trust</a>
       </div>
@@ -177,14 +177,16 @@
 
         <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
           <div class="aspect-[16/9] bg-black">
-            <iframe
-              class="w-full h-full"
-              src="https://www.youtube.com/embed/RQcPPQRmO04?autoplay=0&mute=1&loop=1&playlist=RQcPPQRmO04&rel=0&modestbranding=1&playsinline=1"
-              title="Within Farm’s Reach Origins"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+<iframe
+class="w-full h-full"
+loading="lazy"
+referrerpolicy="strict-origin-when-cross-origin"
+src="https://www.youtube.com/embed/RQcPPQRmO04?autoplay=0&mute=1&loop=1&playlist=RQcPPQRmO04&rel=0&modestbranding=1&playsinline=1"
+title="Within Farm’s Reach Origins"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
           </div>
         </div>
       </div>
@@ -438,33 +440,31 @@
     function onYouTubeIframeAPIReady() {
       apiReady = true;
 
-      if (document.getElementById("heroPlayer")) {
-        heroPlayer = new YT.Player("heroPlayer", {
-          videoId: HERO_ID,
-          playerVars: {
-            autoplay: 1,
-            mute: 1,           // required for autoplay
-            loop: 1,
-            playlist: HERO_ID, // required for single-video loop
-            controls: 1,
-            modestbranding: 1,
-            rel: 0,
-            playsinline: 1
-          },
-          events: {
-            onReady: e => e.target.playVideo(),
-            onStateChange: e => {
-              if (e.data === YT.PlayerState.PLAYING) pauseOther("hero");
-            }
-          }
-        });
+    if (document.getElementById("heroPlayer")) {
+  heroPlayer = new YT.Player("heroPlayer", {
+    videoId: HERO_ID,
+    playerVars: {
+      autoplay: 0,       // don't start immediately; wait for visibility
+      mute: 1,
+      loop: 1,
+      playlist: HERO_ID,
+      controls: 1,
+      modestbranding: 1,
+      rel: 0,
+      playsinline: 1
+    },
+    events: {
+      onStateChange: e => {
+        if (e.data === YT.PlayerState.PLAYING) pauseOther("hero");
       }
-
+    }
+  });
+}
       if (document.getElementById("overviewPlayer")) {
         overviewPlayer = new YT.Player("overviewPlayer", {
           videoId: OVERVIEW_ID,
           playerVars: {
-            autoplay: 1,
+            autoplay: 0,          // let IntersectionObserver control playback
             mute: 1,              // required for autoplay
             loop: 1,
             playlist: OVERVIEW_ID, // required for single-video loop
@@ -474,7 +474,6 @@
             playsinline: 1
           },
           events: {
-            onReady: e => e.target.playVideo(),
             onStateChange: e => {
               if (e.data === YT.PlayerState.PLAYING) pauseOther("overview");
             }
@@ -488,30 +487,34 @@
     window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
     // Only play the one that's >= 50% visible
-    function setupViewportControl() {
-      if (!("IntersectionObserver" in window)) return;
+   function setupViewportControl() {
+  if (!("IntersectionObserver" in window)) {
+    // Sensible fallback: play hero muted, pause overview
+    if (apiReady && heroPlayer && heroPlayer.playVideo) heroPlayer.playVideo();
+    if (apiReady && overviewPlayer && overviewPlayer.pauseVideo) overviewPlayer.pauseVideo();
+    return;
+  }
 
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const el = entry.target;
-          const isVisible = entry.intersectionRatio >= 0.5;
-          if (!apiReady) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      const isVisible = entry.intersectionRatio >= 0.5;
+      if (!apiReady) return;
 
-          if (el.id === "heroPlayer" && heroPlayer) {
-            isVisible ? heroPlayer.playVideo() : heroPlayer.pauseVideo();
-          }
-          if (el.id === "overviewPlayer" && overviewPlayer) {
-            isVisible ? overviewPlayer.playVideo() : overviewPlayer.pauseVideo();
-          }
-        });
-      }, { threshold: 0.5 });
+      if (el.id === "heroPlayer" && heroPlayer) {
+        isVisible ? heroPlayer.playVideo() : heroPlayer.pauseVideo();
+      }
+      if (el.id === "overviewPlayer" && overviewPlayer) {
+        isVisible ? overviewPlayer.playVideo() : overviewPlayer.pauseVideo();
+      }
+    });
+  }, { threshold: 0.5 });
 
-      const heroEl = document.getElementById("heroPlayer");
-      const overviewEl = document.getElementById("overviewPlayer");
-      heroEl && io.observe(heroEl);
-      overviewEl && io.observe(overviewEl);
-    }
-
+  const heroEl = document.getElementById("heroPlayer");
+  const overviewEl = document.getElementById("overviewPlayer");
+  heroEl && io.observe(heroEl);
+  overviewEl && io.observe(overviewEl);
+}
     // Per-player unmute (and ensure only one is audible)
     function setupPerPlayerUnmute() {
       const heroBtn = document.getElementById("heroUnmute");
