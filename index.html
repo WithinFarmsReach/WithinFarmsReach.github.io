@@ -19,8 +19,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://withinfarmsreach.github.io/" />
 <meta property="og:image" content="https://withinfarmsreach.github.io/assets/og-cover.png" />
+<meta property="og:image:alt" content="Within Farm’s Reach — Educational Trust Association" />
 
- 
 <!-- Open Graph extras -->
 <meta property="og:site_name" content="Within Farm’s Reach" />
 <meta property="og:locale" content="en_CA" />
@@ -33,12 +33,11 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="assets/site.webmanifest">
 <meta name="theme-color" content="#166534" />
+<meta name="color-scheme" content="light" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<!-- Performance: preload OG cover image -->
+<link rel="preload" as="image" href="https://withinfarmsreach.github.io/assets/og-cover.png" imagesrcset="" />
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Within Farm’s Reach — Educational Trust Association Proposal" />
-<meta name="twitter:description" content="Use our real-world case example to avoid pitfalls and build your own Educational Trust Association for land, learning, and legacy." />
-<meta name="twitter:image" content="https://withinfarmsreach.github.io/assets/og-cover.png" />
  <!-- Simple CSS tweaks -->
   <style>
     html{scroll-behavior:smooth}
@@ -60,8 +59,12 @@
   height:100%;
   display:block;
 }
-.unmute-btn{position:absolute;right:.75rem;bottom:.75rem;z-index:2}
-  </style>
+  .unmute-btn{position:absolute;right:.75rem;bottom:.75rem;z-index:2}
+
+  /* Ensure image containers fill correctly */
+  img.object-cover { object-fit: cover; }
+</style>
+ </style>
 </head>
 <body class="bg-white text-gray-900">
   <!-- NAV -->
