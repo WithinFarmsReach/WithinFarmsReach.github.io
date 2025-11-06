@@ -6,10 +6,9 @@
   <title>Within Farm’s Reach — Educational Trust Association Proposal</title>
   <meta name="description" content="A replicable Educational Trust Association model using Within Farm’s Reach, with a real-world case example for protecting arable family estates and farms via creating transgenerational trust/associations." />
 
- <!-- Performance: preconnect to external assets -->
-<link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
-<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <!-- Performance: preconnect to external assets -->
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
   <!-- Tailwind CSS via CDN (works on GitHub Pages) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,56 +18,35 @@
   <meta property="og:description" content="Use our real-world case example to avoid pitfalls and build your own Educational Trust Association for land, learning, and legacy." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://withinfarmsreach.github.io/" />
-<meta property="og:image" content="https://withinfarmsreach.github.io/assets/og-cover.png" />
-<meta property="og:image:alt" content="Within Farm’s Reach — Educational Trust Association" />
+  <meta property="og:image" content="https://withinfarmsreach.github.io/assets/og-cover.png" />
+  <meta property="og:image:alt" content="Within Farm’s Reach — Educational Trust Association" />
+  <meta property="og:site_name" content="Within Farm’s Reach" />
+  <meta property="og:locale" content="en_CA" />
 
-<!-- Open Graph extras -->
-<meta property="og:site_name" content="Within Farm’s Reach" />
-<meta property="og:locale" content="en_CA" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://withinfarmsreach.github.io/" />
 
-<!-- Canonical -->
-<link rel="canonical" href="https://withinfarmsreach.github.io/" />
+  <!-- Favicon / PWA basics -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <meta name="theme-color" content="#166534" />
+  <meta name="color-scheme" content="light" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-<!-- Favicon / PWA basics -->
-<link rel="icon" href="assets/favicon.ico">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="manifest" href="assets/site.webmanifest">
-<meta name="theme-color" content="#166534" />
-<meta name="color-scheme" content="light" />
-<meta name="referrer" content="strict-origin-when-cross-origin" />
-<!-- Performance: preload OG cover image -->
-<link rel="preload" as="image" href="https://withinfarmsreach.github.io/assets/og-cover.png"/>
+  <!-- Performance: preload OG cover image -->
+  <link rel="preload" as="image" href="https://withinfarmsreach.github.io/assets/og-cover.png"/>
 
- <!-- Simple CSS tweaks -->
+  <!-- Simple CSS tweaks (player-specific rules removed) -->
   <style>
     html{scroll-behavior:smooth}
     .prose p{margin:0 0 1rem}
     .shadow-soft{box-shadow:0 10px 25px rgba(0,0,0,.08)}
-
-/* Robust video wrapper: prevents aspect ratio collapse/overlap */
-.video-box{position:relative;background:#000;border-radius:1rem;overflow:hidden}
-.video-box::before{content:"";display:block;padding-bottom:56.25%} /* 16:9 */
-
-/* ADD this line (you were missing it) */
-.video-iframe{position:absolute;inset:0}
-
-/* Keep this part just below it */
-.video-iframe iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  display:block;
-}
-  .unmute-btn{position:absolute;right:.75rem;bottom:.75rem;z-index:2}
-
-  /* Ensure image containers fill correctly */
-  img.object-cover { object-fit: cover; }
-</style>
-
+    /* Ensure image containers fill correctly */
+    img.object-cover { object-fit: cover; }
+  </style>
 </head>
 <body class="bg-white text-gray-900">
-  
   <!-- A11y: Skip to main content -->
   <a href="#proposal"
      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50
@@ -76,6 +54,7 @@
             focus:rounded-full focus:px-4 focus:py-2">
     Skip to main content
   </a>
+
   <!-- Noscript fallbacks for videos -->
   <noscript>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -97,7 +76,7 @@
   </noscript>
 
   <!-- SPA CONTAINER START -->
-<main id="home" role="main">
+  <main id="home" role="main">
 
     <!-- HERO -->
     <section id="top" class="relative overflow-hidden">
@@ -118,13 +97,24 @@
             </div>
           </div>
 
-          <!-- HERO player (solid 16:9 wrapper) -->
-<div class="video-box shadow-soft border lg:max-h-[960px]">
-                <div id="heroPlayer" class="video-iframe"></div>
-            <button id="heroUnmute" class="unmute-btn rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white" type="button" aria-label="Unmute hero video">
-              🔊 Unmute
-            </button>
-          </div>
+          <!-- HERO video: thumbnail link -->
+          <a href="https://youtu.be/UqJgNQqt1Qg" target="_blank" rel="noopener noreferrer"
+             class="group block rounded-2xl overflow-hidden shadow-soft border">
+            <div class="relative aspect-[16/9] bg-black">
+              <img
+                src="https://i.ytimg.com/vi/UqJgNQqt1Qg/hqdefault.jpg"
+                alt="Hero video thumbnail"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-90" />
+              <span class="pointer-events-none absolute inset-0 grid place-items-center">
+                <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"
+                     class="opacity-90 group-hover:opacity-100 transition">
+                  <circle cx="48" cy="48" r="46" fill="white" opacity="0.85"/>
+                  <polygon points="40,32 72,48 40,64" fill="black"/>
+                </svg>
+              </span>
+            </div>
+            <span class="sr-only">Open Hero video on YouTube</span>
+          </a>
         </div>
       </div>
     </section>
@@ -203,62 +193,74 @@
             </ul>
           </div>
           <div>
-<div class="grid grid-cols-2 gap-4">
-  <img src="/assets/farm-1.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ginkgo leaves" />
-  <img src="/assets/farm-2.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Orchard blossoms" />
-  <img src="/assets/farm-3.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ornamentals" />
-  <img src="/assets/farm-4.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Climbing tree hydrangeas and Golden Transparent apple tree" />
-  <img src="/assets/farm-5.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Blooming magnolia" />
-  <img src="/assets/farm-6.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ferns under canopy" />
+            <div class="grid grid-cols-2 gap-4">
+              <img src="/assets/farm-1.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ginkgo leaves" />
+              <img src="/assets/farm-2.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Orchard blossoms" />
+              <img src="/assets/farm-3.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ornamentals" />
+              <img src="/assets/farm-4.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Climbing tree hydrangeas and Golden Transparent apple tree" />
+              <img src="/assets/farm-5.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Blooming magnolia" />
+              <img src="/assets/farm-6.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ferns under canopy" />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ORIGINS VIDEO (simple iframe; stays muted unless user unmutes in player UI) -->
+    <!-- ORIGINS VIDEO (thumbnail link) -->
     <section id="origins-video" class="py-12 sm:py-16 border-t">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Origins Video</h2>
         <p class="mt-3 text-gray-700">The personal journey that gave rise to the Within Farm’s Reach trust model.</p>
 
         <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
-          <div class="aspect-[16/9] bg-black">
-<iframe
-class="w-full h-full"
-loading="lazy"
-referrerpolicy="strict-origin-when-cross-origin"
-src="https://www.youtube.com/embed/RQcPPQRmO04?autoplay=0&mute=1&loop=1&playlist=RQcPPQRmO04&rel=0&modestbranding=1&playsinline=1"
-title="Within Farm’s Reach Origins"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-allowfullscreen>
-</iframe>
-          </div>
+          <a href="https://youtu.be/RQcPPQRmO04" target="_blank" rel="noopener noreferrer"
+             class="group block">
+            <div class="relative aspect-[16/9] bg-black">
+              <img
+                src="https://i.ytimg.com/vi/RQcPPQRmO04/hqdefault.jpg"
+                alt="Origins video thumbnail"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-90" />
+              <span class="pointer-events-none absolute inset-0 grid place-items-center">
+                <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"
+                     class="opacity-90 group-hover:opacity-100 transition">
+                  <circle cx="48" cy="48" r="46" fill="white" opacity="0.85"/>
+                  <polygon points="40,32 72,48 40,64" fill="black"/>
+                </svg>
+              </span>
+            </div>
+            <span class="sr-only">Open Origins video on YouTube</span>
+          </a>
         </div>
       </div>
     </section>
 
-   <!-- OVERVIEW VIDEO -->
-<section id="overview-video" class="py-12 sm:py-16 border-t">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Overview Video</h2>
-    <p class="mt-3 text-gray-700">A closer look at the energy recovery system build in action.</p>
+    <!-- OVERVIEW VIDEO (thumbnail link) -->
+    <section id="overview-video" class="py-12 sm:py-16 border-t">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Overview Video</h2>
+        <p class="mt-3 text-gray-700">A closer look at the energy recovery system build in action.</p>
 
-    <div class="relative rounded-2xl overflow-hidden shadow-soft border mt-6">
-      <div class="aspect-[16/9] relative">
-        <!-- This div will be replaced by the YT API iframe -->
-        <div id="overviewPlayer" class="absolute inset-0 w-full h-full"></div>
+        <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
+          <a href="https://youtu.be/sSPoZu1ibMM" target="_blank" rel="noopener noreferrer"
+             class="group block">
+            <div class="relative aspect-[16/9] bg-black">
+              <img
+                src="https://i.ytimg.com/vi/sSPoZu1ibMM/hqdefault.jpg"
+                alt="Overview video thumbnail"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-90" />
+              <span class="pointer-events-none absolute inset-0 grid place-items-center">
+                <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"
+                     class="opacity-90 group-hover:opacity-100 transition">
+                  <circle cx="48" cy="48" r="46" fill="white" opacity="0.85"/>
+                  <polygon points="40,32 72,48 40,64" fill="black"/>
+                </svg>
+              </span>
+            </div>
+            <span class="sr-only">Open Overview video on YouTube</span>
+          </a>
+        </div>
       </div>
-
-      <button id="overviewUnmute"
-              class="unmute-btn rounded-full bg-white/90 px-3 py-1 text-xs font-medium shadow hover:bg-white"
-              type="button" aria-label="Unmute overview video">
-        🔊 Unmute
-      </button>
-    </div>
-  </div>
-</section>    </section>
+    </section>
 
     <!-- DOCUMENTS -->
     <section id="documents" class="py-16 sm:py-24 bg-gray-50">
@@ -295,10 +297,10 @@ allowfullscreen>
         <p class="mt-6 text-xs text-gray-500">Tip: Export your Word docs to PDF and place them in a <code>docs/</code> folder so these links work on GitHub Pages.</p>
       </div>
     </section>
-</main> 
+  </main>
 
   <!-- SPA RENDER TARGET -->
-<div id="spa" class="hidden"></div>
+  <div id="spa" class="hidden"></div>
 
   <!-- TEMPLATES FOR LIGHTWEIGHT PAGES -->
   <template id="page-guide">
@@ -406,40 +408,42 @@ allowfullscreen>
     window.addEventListener('hashchange', render);
     window.addEventListener('DOMContentLoaded', render);
   </script>
-<script>
-  // Mobile nav toggle
-  const menuBtn   = document.getElementById('menuBtn');
-  const mobileNav = document.getElementById('mobileNav');
 
-  if (menuBtn && mobileNav) {
-    menuBtn.addEventListener('click', () => {
-      const isHidden = mobileNav.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', (!isHidden).toString());
-    });
+  <script>
+    // Mobile nav toggle
+    const menuBtn   = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
 
-    // Close mobile nav on route changes and on link clicks
-    window.addEventListener('hashchange', () => {
-      if (!mobileNav.classList.contains('hidden')) {
-        mobileNav.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-    mobileNav.addEventListener('click', (e) => {
-      if (e.target.closest('a')) {
-        mobileNav.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', () => {
+        const isHidden = mobileNav.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', (!isHidden).toString());
+      });
 
-    // Close on resize to md and up
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) {
-        mobileNav.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-</script>
+      // Close mobile nav on route changes and on link clicks
+      window.addEventListener('hashchange', () => {
+        if (!mobileNav.classList.contains('hidden')) {
+          mobileNav.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      mobileNav.addEventListener('click', (e) => {
+        if (e.target.closest('a')) {
+          mobileNav.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close on resize to md and up
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          mobileNav.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+
   <!-- FAQ -->
   <section id="faq" class="py-16 sm:py-24 bg-gray-50">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -489,143 +493,12 @@ allowfullscreen>
       <p>© <span id="year"></span> Within Farm’s Reach. All rights reserved.</p>
       <div class="flex gap-4">
         <a class="hover:text-gray-900" href="#proposal">Proposal</a>
-       <a class="hover:text-gray-900" href="#documents">Documents</a>
-        <a class="hover:text-gray-900" href="#overview-video">Media</a> <!-- or #origins-  video -->
+        <a class="hover:text-gray-900" href="#documents">Documents</a>
+        <a class="hover:text-gray-900" href="#overview-video">Media</a>
       </div>
     </div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-
-  <!-- YouTube IFrame API and player logic -->
-  <script>
-    // Video IDs
-    const HERO_ID = "UqJgNQqt1Qg";     // HERO (top of page)
-    const OVERVIEW_ID = "sSPoZu1ibMM";  // Overview (above Guides & Templates)
-
-    let heroPlayer, overviewPlayer;
-    let apiReady = false;
-
-    // Load YouTube IFrame API once
-    (function loadYT() {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      const firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    })();
-
-    // Pause whichever isn't the active one
-    function pauseOther(which){
-      try{
-        if(which === "hero"){ overviewPlayer && overviewPlayer.pauseVideo(); }
-        if(which === "overview"){ heroPlayer && heroPlayer.pauseVideo(); }
-      }catch(_){}
-    }
-
-    // Called by YT API
-    function onYouTubeIframeAPIReady() {
-      apiReady = true;
-
-if (document.getElementById("heroPlayer")) {
-  heroPlayer = new YT.Player("heroPlayer", {
-    host: 'https://www.youtube-nocookie.com', // privacy-enhanced host
-    videoId: HERO_ID,
-    playerVars: {
-      autoplay: 0,       // wait for visibility
-      mute: 1,
-      loop: 1,
-      playlist: HERO_ID,
-      controls: 1,
-      modestbranding: 1,
-      rel: 0,
-      playsinline: 1,
-      iv_load_policy: 3  // minimize in-video overlays/annotations
-    },
-    events: {
-      onStateChange: e => {
-        if (e.data === YT.PlayerState.PLAYING) pauseOther("hero");
-      }
-    }
-  });
-}if (document.getElementById("overviewPlayer")) {
-  overviewPlayer = new YT.Player("overviewPlayer", {
-    host: 'https://www.youtube-nocookie.com', // privacy-enhanced host
-    videoId: OVERVIEW_ID,
-    playerVars: {
-      autoplay: 0,          // IntersectionObserver controls playback
-      mute: 1,
-      loop: 1,
-      playlist: OVERVIEW_ID, // required for single-video loop
-      controls: 1,
-      modestbranding: 1,
-      rel: 0,
-      playsinline: 1,
-      iv_load_policy: 3     // minimize in-video overlays/annotations
-    },
-    events: {
-      onStateChange: e => {
-        if (e.data === YT.PlayerState.PLAYING) pauseOther("overview");
-      }
-    }
-  });
-}
-      setupViewportControl();
-      setupPerPlayerUnmute();
-    }
-    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-
-    // Only play the one that's >= 50% visible
-   function setupViewportControl() {
-  if (!("IntersectionObserver" in window)) {
-    // Sensible fallback: play hero muted, pause overview
-    if (apiReady && heroPlayer && heroPlayer.playVideo) heroPlayer.playVideo();
-    if (apiReady && overviewPlayer && overviewPlayer.pauseVideo) overviewPlayer.pauseVideo();
-    return;
-  }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const el = entry.target;
-      const isVisible = entry.intersectionRatio >= 0.5;
-      if (!apiReady) return;
-
-      if (el.id === "heroPlayer" && heroPlayer) {
-        isVisible ? heroPlayer.playVideo() : heroPlayer.pauseVideo();
-      }
-      if (el.id === "overviewPlayer" && overviewPlayer) {
-        isVisible ? overviewPlayer.playVideo() : overviewPlayer.pauseVideo();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  const heroEl = document.getElementById("heroPlayer");
-  const overviewEl = document.getElementById("overviewPlayer");
-  heroEl && io.observe(heroEl);
-  overviewEl && io.observe(overviewEl);
-}
-    // Per-player unmute (and ensure only one is audible)
-    function setupPerPlayerUnmute() {
-      const heroBtn = document.getElementById("heroUnmute");
-      const overBtn = document.getElementById("overviewUnmute");
-
-      heroBtn && heroBtn.addEventListener("click", () => {
-        if (apiReady && heroPlayer && heroPlayer.unMute) {
-          heroPlayer.unMute();
-          heroPlayer.setVolume(100);
-          heroBtn.style.display = "none";
-          pauseOther("hero");
-        }
-      });
-
-      overBtn && overBtn.addEventListener("click", () => {
-        if (apiReady && overviewPlayer && overviewPlayer.unMute) {
-          overviewPlayer.unMute();
-          overviewPlayer.setVolume(100);
-          overBtn.style.display = "none";
-          pauseOther("overview");
-        }
-      });
-    }
-  </script>
 </body>
 </html>
