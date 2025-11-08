@@ -37,12 +37,11 @@
   <!-- Performance: preload OG cover image -->
   <link rel="preload" as="image" href="https://withinfarmsreach.github.io/assets/og-cover.png"/>
 
-  <!-- Simple CSS tweaks (player-specific rules removed) -->
+  <!-- Simple CSS tweaks -->
   <style>
     html{scroll-behavior:smooth}
     .prose p{margin:0 0 1rem}
     .shadow-soft{box-shadow:0 10px 25px rgba(0,0,0,.08)}
-    /* Ensure image containers fill correctly */
     img.object-cover { object-fit: cover; }
   </style>
 </head>
@@ -60,20 +59,54 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <p class="text-sm text-gray-700">
         JavaScript is disabled. Watch the videos on YouTube:
-        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=UqJgNQqt1Qg" target="_blank" rel="noopener">
-          Hero video
-        </a>
-        ·
-        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=sSPoZu1ibMM" target="_blank" rel="noopener">
-          Overview video
-        </a>
-        ·
-        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=RQcPPQRmO04" target="_blank" rel="noopener">
-          Origins video
-        </a>
+        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=UqJgNQqt1Qg" target="_blank" rel="noopener">Hero video</a> ·
+        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=trsAEHrvEog" target="_blank" rel="noopener">Overview video</a> ·
+        <a class="underline text-green-700" href="https://www.youtube.com/watch?v=9jqcBGaGbfc" target="_blank" rel="noopener">Origins video</a>
       </p>
     </div>
   </noscript>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="font-semibold tracking-tight text-lg">Within Farm’s Reach</a>
+
+        <nav class="hidden md:flex gap-6 text-sm" aria-label="Primary">
+          <a href="#/" class="hover:text-green-700">Home</a>
+          <a href="#/guide" class="hover:text-green-700">Guide</a>
+          <a href="#/templates" class="hover:text-green-700">Templates</a>
+          <a href="#/about" class="hover:text-green-700">About</a>
+          <a href="#overview-video" class="hover:text-green-700">Media</a>
+          <a href="#faq" class="hover:text-green-700">FAQ</a>
+          <a href="#contact" class="hover:text-green-700">Contact</a>
+        </nav>
+
+        <!-- CTA -->
+        <a href="#contact"
+           class="inline-flex items-center justify-center rounded-full bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800">
+          Start Your Trust
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-full border px-3 py-2 text-sm"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile nav dropdown -->
+  <nav id="mobileNav" class="md:hidden hidden border-b" aria-label="Mobile">
+    <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+      <a href="#/" class="hover:text-green-700">Home</a>
+      <a href="#/guide" class="hover:text-green-700">Guide</a>
+      <a href="#/templates" class="hover:text-green-700">Templates</a>
+      <a href="#/about" class="hover:text-green-700">About</a>
+      <a href="#overview-video" class="hover:text-green-700">Media</a>
+      <a href="#faq" class="hover:text-green-700">FAQ</a>
+      <a href="#contact" class="hover:text-green-700">Contact</a>
+    </div>
+  </nav>
 
   <!-- SPA CONTAINER START -->
   <main id="home" role="main">
@@ -145,6 +178,8 @@
               Activities (nursery development, workshops, renewable systems, internships, residencies) serve as curriculum to disseminate learning within and beyond the community.
             </p>
           </div>
+        </div>
+      </div>
     </section>
 
     <!-- HOW IT WORKS -->
@@ -164,6 +199,7 @@
             <h3 class="font-semibold mb-2">3) Operate & Reinvest</h3>
             <p class="text-sm text-gray-700">Run programs and generate revenue via education, products, activities, and memberships. Carry forward surpluses; under current Canadian tax law, tax applies only to annual interest earned.</p>
           </div>
+        </div>
         <p class="mt-8 text-sm text-gray-500">Note: Jurisdictional details vary. Plan in advance to consult local laws where you operate.</p>
       </div>
     </section>
@@ -189,14 +225,17 @@
               <li>• Seasonal education & small events</li>
             </ul>
           </div>
-            <div class="grid grid-cols-2 gap-4">
-              <img src="/assets/farm-1.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ginkgo leaves" />
-              <img src="/assets/farm-2.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Orchard blossoms" />
-              <img src="/assets/farm-3.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ornamentals" />
-              <img src="/assets/farm-4.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Climbing tree hydrangeas and Golden Transparent apple tree" />
-              <img src="/assets/farm-5.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Blooming magnolia" />
-              <img src="/assets/farm-6.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ferns under canopy" />
-            </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <img src="/assets/farm-1.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ginkgo leaves" />
+            <img src="/assets/farm-2.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Orchard blossoms" />
+            <img src="/assets/farm-3.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ornamentals" />
+            <img src="/assets/farm-4.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Climbing tree hydrangeas and Golden Transparent apple tree" />
+            <img src="/assets/farm-5.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Blooming magnolia" />
+            <img src="/assets/farm-6.png" loading="lazy" decoding="async" width="640" height="320" class="rounded-xl w-full h-40 object-cover" alt="Ferns under canopy" />
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ORIGINS VIDEO (thumbnail link) -->
@@ -204,38 +243,16 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Origins Video</h2>
         <p class="mt-3 text-gray-700">The personal journey that gave rise to the Within Farm’s Reach trust model.</p>
-<!-- NEW Origins Video #2: Full Build Documentary -->
-<div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
-  <a href="https://youtu.be/dY-e8RmDTC8" target="_blank" rel="noopener noreferrer"
-     class="group block">
-    <div class="relative aspect-[16/9] bg-black">
-      <img
-        src="https://i.ytimg.com/vi/dY-e8RmDTC8/hqdefault.jpg"
-        alt="Origins documentary video thumbnail"
-        class="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-90" />
-      <span class="pointer-events-none absolute inset-0 grid place-items-center">
-        <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"
-             class="opacity-90 group-hover:opacity-100 transition">
-          <circle cx="48" cy="48" r="46" fill="white" opacity="0.85"/>
-          <polygon points="40,32 72,48 40,64" fill="black"/>
-        </svg>
-      </span>
-    </div>
-    <span class="sr-only">Open second Origins video on YouTube</span>
-  </a>
-</div>
 
         <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
-          <a href="https://youtu.be/RQcPPQRmO04" target="_blank" rel="noopener noreferrer"
-             class="group block">
+          <a href="https://youtu.be/9jqcBGaGbfc" target="_blank" rel="noopener noreferrer" class="group block">
             <div class="relative aspect-[16/9] bg-black">
               <img
-                src="https://i.ytimg.com/vi/RQcPPQRmO04/hqdefault.jpg"
+                src="https://i.ytimg.com/vi/9jqcBGaGbfc/hqdefault.jpg"
                 alt="Origins video thumbnail"
                 class="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-90" />
               <span class="pointer-events-none absolute inset-0 grid place-items-center">
-                <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"
-                     class="opacity-90 group-hover:opacity-100 transition">
+                <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" class="opacity-90 group-hover:opacity-100 transition">
                   <circle cx="48" cy="48" r="46" fill="white" opacity="0.85"/>
                   <polygon points="40,32 72,48 40,64" fill="black"/>
                 </svg>
@@ -244,6 +261,7 @@
             <span class="sr-only">Open Origins video on YouTube</span>
           </a>
         </div>
+      </div>
     </section>
 
     <!-- OVERVIEW VIDEO (thumbnail link) -->
@@ -253,16 +271,14 @@
         <p class="mt-3 text-gray-700">A closer look at the energy recovery system build in action.</p>
 
         <div class="mt-6 rounded-2xl overflow-hidden shadow-soft border">
-          <a href="https://youtu.be/sSPoZu1ibMM" target="_blank" rel="noopener noreferrer"
-             class="group block">
+          <a href="https://youtu.be/trsAEHrvEog" target="_blank" rel="noopener noreferrer" class="group block">
             <div class="relative aspect-[16/9] bg-black">
               <img
-                src="https://i.ytimg.com/vi/sSPoZu1ibMM/hqdefault.jpg"
+                src="https://i.ytimg.com/vi/trsAEHrvEog/hqdefault.jpg"
                 alt="Overview video thumbnail"
                 class="absolute inset-0 w-full h-full object-cover transition-opacity group-hover:opacity-90" />
               <span class="pointer-events-none absolute inset-0 grid place-items-center">
-                <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true"
-                     class="opacity-90 group-hover:opacity-100 transition">
+                <svg width="96" height="96" viewBox="0 0 96 96" aria-hidden="true" class="opacity-90 group-hover:opacity-100 transition">
                   <circle cx="48" cy="48" r="46" fill="white" opacity="0.85"/>
                   <polygon points="40,32 72,48 40,64" fill="black"/>
                 </svg>
@@ -271,6 +287,7 @@
             <span class="sr-only">Open Overview video on YouTube</span>
           </a>
         </div>
+      </div>
     </section>
 
     <!-- DOCUMENTS -->
@@ -305,6 +322,7 @@
             <p class="mt-2 text-sm text-gray-700">One-file overview of model, assets, and programs.</p>
           </a>
         </div>
+
         <p class="mt-6 text-xs text-gray-500">Tip: Export your Word docs to PDF and place them in a <code>docs/</code> folder so these links work on GitHub Pages.</p>
       </div>
     </section>
@@ -482,13 +500,15 @@
             Operations are funded by memberships, educational activities, and products, with surpluses rolling forward. Only interest derived from carried-forward liquid capital is taxable.
           </p>
         </div>
-<div class="p-6 bg-white rounded-2xl border shadow-soft">
-  <h3 class="font-semibold">How did Within Farm’s Reach decide on which plant species to focus?</h3>
-  <p class="mt-2 text-sm text-gray-700">
-    Species were selected based on ecological value, educational benefit, resilience, and multi-use cultural history.
-    For specific background, please contact us using the email link at the bottom of the page.
-  </p>
-</div>
+        <div class="p-6 bg-white rounded-2xl border shadow-soft">
+          <h3 class="font-semibold">How did Within Farm’s Reach decide on which plant species to focus?</h3>
+          <p class="mt-2 text-sm text-gray-700">
+            Species were selected based on ecological value, educational benefit, resilience, and multi-use cultural history.
+            For specific background, please contact us using the email link at the bottom of the page.
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT / CTA -->
@@ -501,24 +521,27 @@
           Contact the Within Farm’s Reach Team
         </a>
       </div>
+    </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="border-t">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-sm text-gray-600 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p>© <span id="year"></span> Within Farm’s Reach. All rights reserved.</p>
-      <div class="flex gap-4">
+      <div class="flex gap-4 items-center">
         <a class="hover:text-gray-900" href="#proposal">Proposal</a>
         <a class="hover:text-gray-900" href="#documents">Documents</a>
         <a class="hover:text-gray-900" href="#overview-video">Media</a>
-<!-- Visit counter via proxy to avoid ad blockers -->
-<img
-  src="https://images.weserv.nl/?url=hits.sh/withinfarmsreach.github.io.svg&n=-1"
-  alt="Site visit counter"
-  loading="lazy"
-  decoding="async"
-  referrerpolicy="no-referrer"
-/>
-        </div>
+        <!-- Visit counter via proxy to avoid ad blockers -->
+        <img
+          src="https://images.weserv.nl/?url=https%3A%2F%2Fhits.sh%2Fwithinfarmsreach.github.io%2F.svg&n=-1"
+          alt="Site visit counter"
+          loading="lazy"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        />
+      </div>
+    </div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
